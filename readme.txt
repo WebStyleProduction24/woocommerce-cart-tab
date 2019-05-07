@@ -1,8 +1,8 @@
 === WooCommerce Cart Tab ===
-Contributors: jameskoster
-Tags: woocommerce, ecommerce, cart
+Contributors: James Koster
+Tags: woocommerce, ecommerce, cart, tab
 Requires at least: 4.4
-Tested up to: 4.9.6
+Tested up to: 5.2
 Stable tag: 1.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -15,16 +15,16 @@ A big UX mistake on many eCommerce web sites is hiding access to the cart. After
 
 This plugin adds a sitewide tab that displays the number of products in the cart. Clicking the tab or adding a product to the cart from a shop page will reveal the cart contents with a link to the checkout.
 
-There are options in the Customizer to control the display.
+Settings of display of a panel are in the menu of the administrator WordPress panel: `Appearance &rarr; Configure &rarr; Tab "Settings panel Cart Tab"`.
 
 Please feel free to contribute on <a href="https://github.com/jameskoster/woocommerce-cart-tab">github</a>.
 
 == Installation ==
 
-1. Upload `woocommerce-cart-tab` to the `/wp-content/plugins/` directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Choose your display settings on the catalog tab of the WooCommerce settings screen
-3. Done!
+1. Upload `woocommerce-cart-tab` to the `/wp-content/plugins/` directory.
+2. Activate the plugin through the 'Plugins' menu in WordPress.
+3. For setup of appearance in the administrator WordPress panel pass: `Appearance &rarr; Configure &rarr; Tab "Settings panel Cart Tab"`.
+4. Done!
 
 == Frequently Asked Questions ==
 
@@ -43,6 +43,11 @@ Thanks! Please fork the repo on <a href="https://github.com/jameskoster/woocomme
 1. The cart tab.
 
 == Changelog ==
+
+= Addition v.1.1.2 from @WSP24
+
+* WooCommerce 3.6 support.
+* The feature for more flexible editing settings of the display of a Cart Tab is added.
 
 = 1.1.2 - 05/07/2018 =
 * Fix - Cart panel will now close automatically when the cart is emptied.

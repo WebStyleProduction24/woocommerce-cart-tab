@@ -44,6 +44,7 @@ if ( ! class_exists( 'WooCommerce_Cart_Tab_Customizer' ) ) :
 			 * Create defaults from existing options set using the old method
 			 */
 			$cart_tab_position_default = get_option( 'wc_ct_horizontal_position' );
+			$cart_tab_width_buttons_default = '48';
 
 			if ( $cart_tab_position_default ) {
 				delete_option( 'wc_ct_horizontal_position' );
@@ -54,10 +55,17 @@ if ( ! class_exists( 'WooCommerce_Cart_Tab_Customizer' ) ) :
 			/**
 			 * Sections
 			 */
-			$wp_customize->add_section( 'woocommerce_cart_tab' , array(
-				'title'    => __( 'Cart Tab', 'storefront' ),
-				'priority' => 85,
-			) );
+			if ( 'storefront' == get_option( 'template' ) ) {
+				$wp_customize->add_section( 'woocommerce_cart_tab' , array(
+					'title'    => __( 'Cart Tab', 'storefront' ),
+					'priority' => 85,
+				) );
+			} else {
+				$wp_customize->add_section( 'woocommerce_cart_tab' , array(
+					'title'    => __( 'Settings panel Cart Tab', 'woocommerce-cart-tab' ),
+					'priority' => 85,
+				) );
+			}
 
 			/**
 			 * Settings
@@ -68,13 +76,25 @@ if ( ! class_exists( 'WooCommerce_Cart_Tab_Customizer' ) ) :
 				'sanitize_callback' => 'woocommerce_cart_tab_sanitize_choices',
 			) );
 
+			$wp_customize->add_setting( 'woocommerce_cart_tab_width_buttons' , array(
+				'default'           => $cart_tab_width_buttons_default,
+				'transport'         => 'refresh',
+				'sanitize_callback' => 'woocommerce_cart_tab_sanitize_choices',
+			) );
+
+			$wp_customize->add_setting( 'woocommerce_cart_tab_size_heading' , array(
+				'default'           => '17',
+				'transport'         => 'refresh',
+				'sanitize_callback' => 'woocommerce_cart_tab_sanitize_choices',
+			) );
+
 			$wp_customize->add_setting( 'woocommerce_cart_tab_background', array(
-				'default'           	=> '#ffffff',
+				'default'           	=> '#fff',
 				'sanitize_callback' 	=> 'sanitize_hex_color',
 			) );
 
 			$wp_customize->add_setting( 'woocommerce_cart_tab_accent', array(
-				'default'           	=> '#333333',
+				'default'           	=> '#333',
 				'sanitize_callback' 	=> 'sanitize_hex_color',
 			) );
 
@@ -88,6 +108,16 @@ if ( ! class_exists( 'WooCommerce_Cart_Tab_Customizer' ) ) :
 				'sanitize_callback' 	=> 'sanitize_hex_color',
 			) );
 
+			$wp_customize->add_setting( 'woocommerce_cart_tab_text_color', array(
+				'default'           	=> '#333',
+				'sanitize_callback' 	=> 'sanitize_hex_color',
+			) );
+
+			$wp_customize->add_setting( 'woocommerce_cart_tab_list_color', array(
+				'default'           	=> '#5d96ad',
+				'sanitize_callback' 	=> 'sanitize_hex_color',
+			) );
+
 			/**
 			 * Controls
 			 */
@@ -97,8 +127,31 @@ if ( ! class_exists( 'WooCommerce_Cart_Tab_Customizer' ) ) :
 				'settings' => 'woocommerce_cart_tab_position',
 				'type'     => 'select',
 				'choices'  => array(
-								'right' => __( 'Right', 'woocommerce-cart-tab' ),
-								'left'  => __( 'Left', 'woocommerce-cart-tab' ),
+					'right' => __( 'Right', 'woocommerce-cart-tab' ),
+					'left'  => __( 'Left', 'woocommerce-cart-tab' ),
+				),
+			) ) );
+
+			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'woocommerce_cart_tab_width_buttons', array(
+				'label'    => __( 'Width buttons', 'woocommerce-cart-tab' ),
+				'section'  => 'woocommerce_cart_tab',
+				'settings' => 'woocommerce_cart_tab_width_buttons',
+				'type'     => 'select',
+				'choices'  => array(
+					'48' => __( '50%', 'woocommerce-cart-tab' ),
+					'100'  => __( '100%', 'woocommerce-cart-tab' ),
+				),
+			) ) );
+
+			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'woocommerce_cart_tab_size_heading', array(
+				'label'    => __( 'Heading size panel Cart Tab', 'woocommerce-cart-tab' ),
+				'section'  => 'woocommerce_cart_tab',
+				'settings' => 'woocommerce_cart_tab_size_heading',
+				'type'     => 'radio',
+				'choices'  => array(
+					'12' => __( 'Small', 'woocommerce-cart-tab' ),
+					'17'  => __( 'Middle', 'woocommerce-cart-tab' ),
+					'22'  => __( 'Big', 'woocommerce-cart-tab' ),
 				),
 			) ) );
 
@@ -125,6 +178,18 @@ if ( ! class_exists( 'WooCommerce_Cart_Tab_Customizer' ) ) :
 				'section'  				=> 'woocommerce_cart_tab',
 				'settings' 				=> 'woocommerce_cart_tab_text_button_color',
 			) ) );
+
+			$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'woocommerce_cart_tab_text_color', array(
+				'label'	   				=> __( 'Color content', 'woocommerce-cart-tab' ),
+				'section'  				=> 'woocommerce_cart_tab',
+				'settings' 				=> 'woocommerce_cart_tab_text_color',
+			) ) );
+
+			$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'woocommerce_cart_tab_list_color', array(
+				'label'	   				=> __( 'Color text list products', 'woocommerce-cart-tab' ),
+				'section'  				=> 'woocommerce_cart_tab',
+				'settings' 				=> 'woocommerce_cart_tab_list_color',
+			) ) );
 		}
 
 		/**
@@ -135,10 +200,15 @@ if ( ! class_exists( 'WooCommerce_Cart_Tab_Customizer' ) ) :
 		 * @return void
 		 */
 		public function add_customizer_css() {
-			$background = get_theme_mod( 'woocommerce_cart_tab_background', '#ffffff' );
-			$accent     = get_theme_mod( 'woocommerce_cart_tab_accent', '#333333' );
+			$background = get_theme_mod( 'woocommerce_cart_tab_background', '#fff' );
+			$accent     = get_theme_mod( 'woocommerce_cart_tab_accent', '#333' );
 			$button_color     = get_theme_mod( 'woocommerce_cart_tab_button_color', '#96588a' );
 			$text_button_color     = get_theme_mod( 'woocommerce_cart_tab_text_button_color', '#fff' );
+			$width_buttons     = get_theme_mod( 'woocommerce_cart_tab_width_buttons', '48' );
+			$size_heading     = get_theme_mod( 'woocommerce_cart_tab_size_heading', '17' );
+			$color_content     = get_theme_mod( 'woocommerce_cart_tab_text_color', '#333' );
+			$cart_list_color	=	get_theme_mod( 'woocommerce_cart_tab_list_color', '#5d96ad' );
+
 
 			$styles                = '
 			.woocommerce-cart-tab-container {
@@ -167,7 +237,28 @@ if ( ! class_exists( 'WooCommerce_Cart_Tab_Customizer' ) ) :
 			.woocommerce-cart-tab-container .widget_shopping_cart .buttons .button {
 				background-color: ' . $button_color . ';
 				color: ' . $text_button_color . ';
+				width: ' . $width_buttons . '%;
+			}
+
+			.woocommerce-mini-cart__total, .woocommerce-cart-tab-container .widget_shopping_cart .widgettitle {
+				color: ' . $color_content . ';
+			}
+
+			.woocommerce-cart-tab-container .widget_shopping_cart .widgettitle {
+				font-size: ' . $size_heading . 'px;
+			}
+
+			.woocommerce-mini-cart.cart_list.product_list_widget {
+				color: ' . $cart_list_color . ';
 			}';
+
+			if ( $width_buttons == '100' ) {
+				$styles                .= '
+				.woocommerce-cart-tab-container .widget_shopping_cart .buttons .button:first-child {
+					margin-bottom: 10px;
+				}';
+			}
+
 
 			wp_add_inline_style( 'cart-tab-styles', $styles );
 		}
