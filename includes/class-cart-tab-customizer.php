@@ -78,6 +78,16 @@ if ( ! class_exists( 'WooCommerce_Cart_Tab_Customizer' ) ) :
 				'sanitize_callback' 	=> 'sanitize_hex_color',
 			) );
 
+			$wp_customize->add_setting( 'woocommerce_cart_tab_button_color', array(
+				'default'           	=> '#96588a',
+				'sanitize_callback' 	=> 'sanitize_hex_color',
+			) );
+
+			$wp_customize->add_setting( 'woocommerce_cart_tab_text_button_color', array(
+				'default'           	=> '#fff',
+				'sanitize_callback' 	=> 'sanitize_hex_color',
+			) );
+
 			/**
 			 * Controls
 			 */
@@ -103,6 +113,18 @@ if ( ! class_exists( 'WooCommerce_Cart_Tab_Customizer' ) ) :
 				'section'  				=> 'woocommerce_cart_tab',
 				'settings' 				=> 'woocommerce_cart_tab_accent',
 			) ) );
+
+			$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'woocommerce_cart_tab_button_color', array(
+				'label'	   				=> __( 'Buttons color', 'woocommerce-cart-tab' ),
+				'section'  				=> 'woocommerce_cart_tab',
+				'settings' 				=> 'woocommerce_cart_tab_button_color',
+			) ) );
+
+			$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'woocommerce_cart_tab_text_button_color', array(
+				'label'	   				=> __( 'Color text buttons', 'woocommerce-cart-tab' ),
+				'section'  				=> 'woocommerce_cart_tab',
+				'settings' 				=> 'woocommerce_cart_tab_text_button_color',
+			) ) );
 		}
 
 		/**
@@ -115,6 +137,8 @@ if ( ! class_exists( 'WooCommerce_Cart_Tab_Customizer' ) ) :
 		public function add_customizer_css() {
 			$background = get_theme_mod( 'woocommerce_cart_tab_background', '#ffffff' );
 			$accent     = get_theme_mod( 'woocommerce_cart_tab_accent', '#333333' );
+			$button_color     = get_theme_mod( 'woocommerce_cart_tab_button_color', '#96588a' );
+			$text_button_color     = get_theme_mod( 'woocommerce_cart_tab_text_button_color', '#fff' );
 
 			$styles                = '
 			.woocommerce-cart-tab-container {
@@ -138,6 +162,11 @@ if ( ! class_exists( 'WooCommerce_Cart_Tab_Customizer' ) ) :
 
 			.woocommerce-cart-tab__icon-bag {
 				fill: ' . $accent . ';
+			}
+
+			.woocommerce-cart-tab-container .widget_shopping_cart .buttons .button {
+				background-color: ' . $button_color . ';
+				color: ' . $text_button_color . ';
 			}';
 
 			wp_add_inline_style( 'cart-tab-styles', $styles );
