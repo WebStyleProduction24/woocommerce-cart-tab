@@ -1,6 +1,6 @@
 === WooCommerce Cart Tab ===
-Contributors: James Koster
-Tags: woocommerce, ecommerce, cart, tab
+Contributors: James Koster and Update edit Web Style Production 24
+Tags: woocommerce, ecommerce, cart, tab, wsp24
 Requires at least: 4.4
 Tested up to: 5.2
 Stable tag: 1.1.2
