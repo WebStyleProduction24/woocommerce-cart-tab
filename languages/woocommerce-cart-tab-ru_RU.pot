@@ -1,0 +1,119 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Plugins - WooCommerce Cart Tab - Stable (latest "
+"release)\n"
+"POT-Creation-Date: 2019-05-08 03:05+0300\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Евгений <evgeniy@wsp24.ru>\n"
+"Language-Team: Web Style Production 24\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;"
+"_nx_noop:1,2,3c;esc_attr__;esc_attr_e;esc_html__;esc_html_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Generator: Poedit 2.2.1\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: includes/cart-tab-templates.php:59
+msgid "Your Cart"
+msgstr "Ваша корзина"
+
+#: includes/class-cart-tab-customizer.php:60
+msgid "Cart Tab"
+msgstr "Панель корзины"
+
+#: includes/class-cart-tab-customizer.php:65
+msgid "Settings panel Cart Tab"
+msgstr "Настройки панели Cart Tab"
+
+#: includes/class-cart-tab-customizer.php:125
+msgid "Position"
+msgstr "Положение"
+
+#: includes/class-cart-tab-customizer.php:130
+msgid "Right"
+msgstr "Справа"
+
+#: includes/class-cart-tab-customizer.php:131
+msgid "Left"
+msgstr "Слева"
+
+#: includes/class-cart-tab-customizer.php:136
+msgid "Width buttons"
+msgstr "Ширина кнопок"
+
+#: includes/class-cart-tab-customizer.php:141
+msgid "50%"
+msgstr "50%"
+
+#: includes/class-cart-tab-customizer.php:142
+msgid "100%"
+msgstr "100%"
+
+#: includes/class-cart-tab-customizer.php:147
+msgid "Heading size panel Cart Tab"
+msgstr "Размер заголовка панели Cart Tab"
+
+#: includes/class-cart-tab-customizer.php:152
+msgid "Small"
+msgstr "Маленький шрифт"
+
+#: includes/class-cart-tab-customizer.php:153
+msgid "Middle"
+msgstr "Средний шрифт"
+
+#: includes/class-cart-tab-customizer.php:154
+msgid "Big"
+msgstr "Большой шрифт"
+
+#: includes/class-cart-tab-customizer.php:159
+msgid "Background color"
+msgstr "Цвет фона"
+
+# "X-Poedit-SearchPathExcluded-0: js\n"
+# "X-Poedit-SearchPathExcluded-1: css\n"
+#: includes/class-cart-tab-customizer.php:165
+msgid "Icon color"
+msgstr "Цвет иконки"
+
+# "X-Poedit-SearchPathExcluded-0: js\n"
+# "X-Poedit-SearchPathExcluded-1: css\n"
+#: includes/class-cart-tab-customizer.php:171
+msgid "Buttons color"
+msgstr "Цвет кнопок"
+
+#: includes/class-cart-tab-customizer.php:177
+msgid "Color text buttons"
+msgstr "Цвет надписей на кнопках"
+
+#: includes/class-cart-tab-customizer.php:183
+msgid "Color content"
+msgstr "Цвет контента"
+
+#: includes/class-cart-tab-customizer.php:189
+msgid "Color text list products"
+msgstr "Цвет текста списка продуктов в корзине"
+
+#~ msgid "http://jameskoster.co.uk"
+#~ msgstr "http://jameskoster.co.uk"
+
+#~ msgid "jameskoster"
+#~ msgstr "James Koster"
+
+#~ msgid ""
+#~ "Displays a sitewide link to the cart which reveals the cart contents on "
+#~ "hover."
+#~ msgstr ""
+#~ "Отображает ссылку на корзину в виде закладки на странице, при нажатии на "
+#~ "которую появляется панель с содержимым корзины."
+
+#~ msgid "http://jameskoster.co.uk/tag/cart-tab/"
+#~ msgstr "http://jameskoster.co.uk/tag/cart-tab/"
+
+#~ msgid "WooCommerce Cart Tab"
+#~ msgstr "WooCommerce Cart Tab"

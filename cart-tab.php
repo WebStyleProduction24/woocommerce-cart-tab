@@ -56,7 +56,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 			 */
 			public function __construct() {
 				$this->token   = 'woocommerce-cart-tab';
-				$this->version = '1.1.2';
+				$this->version = '1.1.2.1';
 				$this->setup();
 				register_activation_hook( __FILE__, array( $this, 'install' ) );
 			}
